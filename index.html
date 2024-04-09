@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>car moving</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        div {
+            padding: 10px;
+            padding-right: 60px;
+            background-color: blanchedalmond;
+            height: 80px;
+        }
+
+        #car {
+            height: 70px;
+            float: left;
+            margin-top: 30px;
+            position: relative;
+        }
+
+        #tree {
+            height: 80px;
+            float: right;
+        }
+
+        button {  
+            margin: 20px 10px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Car Move Project:</h1>
+    <div>
+        <img id="car"
+            src="https://cdn.icon-icons.com/icons2/3081/PNG/512/police_car_hooter_emergency_light_icon_191285.png"
+            alt="">
+        <img id="tree"
+            src="https://media.istockphoto.com/id/1345693399/vector/grim-reaper-pumpkin-head-cartoon-character-with-scythe-halloween-jack-o-lantern-illustration.jpg?s=2048x2048&w=is&k=20&c=BvGedywRUfrUG93Czl6vui1CpWXtsW-lpe2BWwGSOm0="
+            alt="">
+    </div>
+    <button onclick="f1()">Forward</button>
+    <button onclick="f2()">Backward</button>
+    <button onclick="f3()">Stop</button>
+    <button onclick="f4()">Reset</button>
+    <button onclick="f5()">Play Music</button>
+    <button onclick="f6()">Pause Music</button>
+</body>
+<script>
+    var car = document.getElementById("car");
+    var tree = document.getElementById("tree");
+    var x = 0;
+    var i;
+    var w = window.innerWidth - 200;
+    function f1() {
+        clearInterval(i);
+        i = setInterval(function () {
+            if (x < w) {
+                x += 1;
+                car.style.left = x + "px";
+            } else {
+                clearInterval(i);
+                tree.style.transform = "rotate(40deg) translate(20px,-20px)";
+            }
+        }, 1);
+    }
+    function f2() {
+        clearInterval(i);
+        tree.style.transform = "rotate(0deg) translate(0px,0px)";
+        i = setInterval(function () {
+            if (x > 0) {
+                x -= 1;
+                car.style.left = x + "px";
+            } else {
+                clearInterval(i);
+            }
+
+        }, 1);
+
+    }
+    function f3() {
+        clearInterval(i);
+    }
+    function f4() {
+        clearInterval(i);
+        x = 0;
+        car.style.left = "0px";
+        tree.style.transform = "rotate(0deg) translate(0px,0px)";
+    }
+    // function resize() {
+    //     w = window.innerWidth - 160;
+    //     location.reload();
+    // }
+    var a = new Audio("Police horn.mp3");
+    function f5() {
+        a.play();
+    }
+    function f6() {
+        a.pause();
+    }
+
+</script>
+
+</html>
